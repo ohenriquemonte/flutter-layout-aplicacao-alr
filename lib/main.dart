@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_aplicacao_alr/paginas/carrinhos.dart';
+import 'package:flutter_layout_aplicacao_alr/paginas/detalhes.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {'/carrinho': (context) => Carrinho()},
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -79,6 +82,21 @@ class Inicio extends StatefulWidget {
 class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Inicio'),
+      ),
+      body: FlatButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Detalhes(),
+            ),
+          );
+        },
+        child: Text('Vamos para os detalhes'),
+      ),
+    );
   }
 }
