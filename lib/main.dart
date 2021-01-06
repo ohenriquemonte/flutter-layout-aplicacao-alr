@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/carrinhos.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/detalhes.dart';
+import 'package:flutter_layout_aplicacao_alr/widgets/appbar_customizada.dart';
 
 void main() {
   runApp(MyApp());
@@ -83,9 +84,7 @@ class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Inicio'),
-      ),
+      appBar: AppBarCustomizada(titulo: 'Lojinha Alura'),
       body: FlatButton(
         onPressed: () {
           Navigator.push(
