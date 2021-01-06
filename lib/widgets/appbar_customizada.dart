@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'botao_carrinho.dart';
 
 class AppBarCustomizada extends StatelessWidget with PreferredSizeWidget {
   final String titulo;
@@ -15,6 +16,9 @@ class AppBarCustomizada extends StatelessWidget with PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
 	  centerTitle: true,
+	  actions: [
+		  BotaoCarrinho()
+	  ],
     );
   }
 

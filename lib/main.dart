@@ -84,6 +84,7 @@ class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBarCustomizada(titulo: 'Lojinha Alura'),
       body: FlatButton(
         onPressed: () {
