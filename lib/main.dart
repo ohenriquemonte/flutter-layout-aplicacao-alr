@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/carrinhos.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/detalhes.dart';
-import 'package:flutter_layout_aplicacao_alr/widgets/appbar_customizada.dart';
+import 'package:flutter_layout_aplicacao_alr/paginas/widgets/appbar_customizada.dart';
 
 void main() {
   runApp(MyApp());
