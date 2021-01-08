@@ -85,7 +85,10 @@ class _InicioState extends State<Inicio> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBarCustomizada(titulo: 'Lojinha Alura'),
+      appBar: AppBarCustomizada(
+        titulo: 'Lojinha Alura',
+        ehPaginaCarrinho: false,
+      ),
       body: FlatButton(
         onPressed: () {
           Navigator.push(
