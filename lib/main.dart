@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/carrinhos.dart';
-import 'package:flutter_layout_aplicacao_alr/paginas/detalhes.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/appbar_customizada.dart';
+import 'package:flutter_layout_aplicacao_alr/paginas/widgets/grid_produtos.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Inicio extends StatefulWidget {
+class Inicio extends StatelessWidget {
   final List moveis = [
     {
       "titulo": "Mesa",
@@ -77,11 +77,6 @@ class Inicio extends StatefulWidget {
   ];
 
   @override
-  _InicioState createState() => _InicioState();
-}
-
-class _InicioState extends State<Inicio> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -89,16 +84,8 @@ class _InicioState extends State<Inicio> {
         titulo: 'Lojinha Alura',
         ehPaginaCarrinho: false,
       ),
-      body: FlatButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Detalhes(),
-            ),
-          );
-        },
-        child: Text('Vamos para os detalhes'),
+      body: GridProdutos(
+        moveis: moveis,
       ),
     );
   }
