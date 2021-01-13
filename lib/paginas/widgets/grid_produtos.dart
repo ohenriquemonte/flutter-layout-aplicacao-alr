@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_aplicacao_alr/modelos/movel.dart';
+import 'package:flutter_layout_aplicacao_alr/paginas/widgets/elemento_grid_produtos.dart';
 
 class GridProdutos extends StatelessWidget {
   final moveis;
@@ -10,14 +12,12 @@ class GridProdutos extends StatelessWidget {
     return GridView.builder(
         // return GridView(
         gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: moveis.length,
         itemBuilder: (BuildContext context, int indice) {
-          final movel = moveis[indice];
+          final movel = Movel.fromJson(moveis[indice]);
 
-          return Container(
-            child: Text('$movel'),
-          );
+          return ElementoGridProdutos(movel: movel);
         }
         //   children: [
         //     Container(color: Colors.red),
