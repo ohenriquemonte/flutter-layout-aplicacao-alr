@@ -84,8 +84,36 @@ class Inicio extends StatelessWidget {
         titulo: 'Lojinha Alura',
         ehPaginaCarrinho: false,
       ),
-      body: GridProdutos(
-        moveis: moveis,
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  margin:
+                      EdgeInsets.only(left: 30, right: 20, top: 10, bottom: 10),
+                  child: Divider(),
+                ),
+              ),
+              Text(
+                'Produtos',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Expanded(
+                child: Container(
+                  margin:
+                      EdgeInsets.only(left: 30, right: 20, top: 10, bottom: 10),
+                  child: Divider(),
+                ),
+              ),
+            ],
+          ),
+          Flexible(
+            child: GridProdutos(
+              moveis: moveis,
+            ),
+          )
+        ],
       ),
     );
   }
