@@ -9,7 +9,12 @@ class TituloElementoGridProdutos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 10.0,
-      child: Text(titulo),
+      child: Text(
+        titulo,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
