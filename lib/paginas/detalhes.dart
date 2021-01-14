@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/modelos/movel.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/appbar_customizada.dart';
+import 'package:flutter_layout_aplicacao_alr/paginas/widgets/card_detalhes.dart';
 
 class Detalhes extends StatelessWidget {
   final Movel movel;
@@ -16,18 +17,28 @@ class Detalhes extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBarCustomizada(
-          titulo: movel.titulo,
-          ehPaginaCarrinho: false,
-        ),
-        body: FlatButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/carrinho');
-          },
-          child: Text('Agora para a pagina carrinho'),
-        ),
-      ),
+          backgroundColor: Colors.transparent,
+          appBar: AppBarCustomizada(
+            titulo: movel.titulo,
+            ehPaginaCarrinho: false,
+          ),
+          body: Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: EdgeInsets.all(16),
+              height: 200,
+              child: CardDetalhes(
+                movel: movel,
+              ),
+            ),
+          )
+          // FlatButton(
+          //   onPressed: () {
+          //     Navigator.pushNamed(context, '/carrinho');
+          //   },
+          //   child: Text('Agora para a pagina carrinho'),
+          // ),
+          ),
     );
   }
 }
