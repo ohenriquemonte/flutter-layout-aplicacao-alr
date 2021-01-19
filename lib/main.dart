@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_aplicacao_alr/modelos/item_carrinho.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/carrinhos.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/appbar_customizada.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/grid_produtos.dart';
@@ -38,6 +39,8 @@ class MyApp extends StatelessWidget {
 }
 
 class Inicio extends StatelessWidget {
+  static List<ItemCarrinho> itensCarrinho = List();
+
   final List moveis = [
     {
       "titulo": "Mesa",

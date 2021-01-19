@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_layout_aplicacao_alr/main.dart';
+import 'package:flutter_layout_aplicacao_alr/paginas/widgets/indicador_botao_carrinho.dart';
 
 class BotaoCarrinho extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-			onTap: () {
-				Navigator.pushNamed(context, '/carrinho');
-			},
+      onTap: () {
+        Navigator.pushNamed(context, '/carrinho');
+      },
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -16,12 +18,30 @@ class BotaoCarrinho extends StatelessWidget {
         alignment: Alignment.centerRight,
         height: 40,
         padding: EdgeInsets.only(right: 20.0, left: 20.0),
-        child: Image(
-          height: 30.0,
-          image: AssetImage(
-            'utilidades/assets/icones/carrinho.png',
+        child: _visibilidadeIndicadorCarrinho(),
+      ),
+    );
+  }
+
+  _visibilidadeIndicadorCarrinho() {
+    if (Inicio.itensCarrinho.length > 0) {
+      return Stack(
+        children: [
+          Image(
+            height: 30.0,
+            image: AssetImage(
+              'utilidades/assets/icones/carrinho.png',
+            ),
           ),
-        ),
+          IndicadorBotaoCarrinho()
+        ],
+      );
+    }
+
+    return Image(
+      height: 30.0,
+      image: AssetImage(
+        'utilidades/assets/icones/carrinho.png',
       ),
     );
   }
