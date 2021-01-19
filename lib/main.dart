@@ -18,6 +18,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: PaletaCores().lilas,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        textTheme: TextTheme(
+          headline1: TextStyle(
+              fontSize: 20,
+              fontFamily: 'Alata',
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
+          headline2: TextStyle(
+            fontSize: 20,
+            fontFamily: 'Alata',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
       ),
       home: Inicio(),
     );
