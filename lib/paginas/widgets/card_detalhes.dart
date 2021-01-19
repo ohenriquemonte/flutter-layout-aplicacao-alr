@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/modelos/movel.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/texto_detalhes.dart';
+import 'package:intl/intl.dart';
 
 class CardDetalhes extends StatelessWidget {
   final Movel movel;
+  final formatacaoReais = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
 
   CardDetalhes({this.movel});
 
@@ -17,7 +19,17 @@ class CardDetalhes extends StatelessWidget {
           ),
           TextoDetalhes(
             texto: movel.descricao,
-          )
+          ),
+          Row(
+            children: [
+              Text(formatacaoReais.format(movel.preco)),
+              FlatButton(
+                color: Theme.of(context).primaryColor,
+                onPressed: () {},
+                child: Text('Comprar'),
+              )
+            ],
+          ),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/carrinhos.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/appbar_customizada.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/grid_produtos.dart';
+import 'package:flutter_layout_aplicacao_alr/paleta_cores.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: PaletaCores().lilas,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Inicio(),
