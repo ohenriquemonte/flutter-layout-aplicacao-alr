@@ -3,8 +3,17 @@ import 'package:flutter_layout_aplicacao_alr/modelos/item_carrinho.dart';
 import 'package:flutter_layout_aplicacao_alr/modelos/movel.dart';
 import '../../main.dart';
 
-class ListaCarrinho extends StatelessWidget {
+class ListaCarrinho extends StatefulWidget {
+  final Function atualiza;
+  ListaCarrinho({this.atualiza});
+
+  @override
+  _ListaCarrinhoState createState() => _ListaCarrinhoState();
+}
+
+class _ListaCarrinhoState extends State<ListaCarrinho> {
   final List<ItemCarrinho> carrinho = Inicio.itensCarrinho;
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -39,7 +48,7 @@ class ListaCarrinho extends StatelessWidget {
                             Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () => aumentarQuantidade(item),
+                                  onTap: () => _aumentarQuantidade(item),
                                   child: Container(
                                     margin: EdgeInsets.all(8),
                                     child: Icon(
@@ -50,7 +59,7 @@ class ListaCarrinho extends StatelessWidget {
                                 ),
                                 Text('${item.quantidade}'),
                                 GestureDetector(
-                                  onTap: () => diminuirQuantidade(item),
+                                  onTap: () => _diminuirQuantidade(item),
                                   child: Container(
                                     margin: EdgeInsets.all(8),
                                     child: Icon(
@@ -75,11 +84,29 @@ class ListaCarrinho extends StatelessWidget {
     );
   }
 
-  aumentarQuantidade(ItemCarrinho item) {
-    item.quantidade++;
+  _aumentarQuantidade(ItemCarrinho item) {
+    setState(() {
+      item.quantidade++;
+      widget.atualiza();
+    });
   }
 
-  diminuirQuantidade(ItemCarrinho item) {
-    if (item.quantidade < 0) item.quantidade--;
+  _diminuirQuantidade(ItemCarrinho item) {
+    if (item.quantidade > 1) {
+      setState(() {
+        item.quantidade--;
+        widget.atualiza();
+      });
+    } else {
+      _removerMovel(item);
+    }
+    widget.atualiza();
+  }
+
+  _removerMovel(ItemCarrinho item) {
+    setState(() {
+      Inicio.itensCarrinho.remove(item);
+      widget.atualiza();
+    });
   }
 }
