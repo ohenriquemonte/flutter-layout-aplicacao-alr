@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/modelos/item_carrinho.dart';
 import 'package:flutter_layout_aplicacao_alr/modelos/movel.dart';
+import 'package:intl/intl.dart';
 import '../../main.dart';
 
 class ListaCarrinho extends StatefulWidget {
@@ -13,6 +14,7 @@ class ListaCarrinho extends StatefulWidget {
 
 class _ListaCarrinhoState extends State<ListaCarrinho> {
   final List<ItemCarrinho> carrinho = Inicio.itensCarrinho;
+  final formatacaoReais = NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$');
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,13 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
             clipBehavior: Clip.hardEdge,
             child: Row(
               children: [
-                Image(
-                  image: AssetImage('utilidades/assets/imagens/${movel.foto}'),
-                  height: 92,
+                Expanded(
+                  child: Image(
+                    image:
+                        AssetImage('utilidades/assets/imagens/${movel.foto}'),
+                    height: 92,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -40,11 +46,14 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(movel.titulo),
+                        Text(
+                          movel.titulo,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('${movel.preco}'),
+                            Text(formatacaoReais.format(movel.preco)),
                             Row(
                               children: [
                                 GestureDetector(
@@ -84,14 +93,14 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
     );
   }
 
-  _aumentarQuantidade(ItemCarrinho item) {
+  void _aumentarQuantidade(ItemCarrinho item) {
     setState(() {
       item.quantidade++;
       widget.atualiza();
     });
   }
 
-  _diminuirQuantidade(ItemCarrinho item) {
+  void _diminuirQuantidade(ItemCarrinho item) {
     if (item.quantidade > 1) {
       setState(() {
         item.quantidade--;
@@ -103,7 +112,7 @@ class _ListaCarrinhoState extends State<ListaCarrinho> {
     widget.atualiza();
   }
 
-  _removerMovel(ItemCarrinho item) {
+  void _removerMovel(ItemCarrinho item) {
     setState(() {
       Inicio.itensCarrinho.remove(item);
       widget.atualiza();

@@ -37,8 +37,8 @@ class CardDetalhes extends StatelessWidget {
                 FlatButton(
                   color: Theme.of(context).primaryColor,
                   onPressed: () {
-                    _adicionarItemCarrinho(
-                        ItemCarrinho(quantidade: 1, movel: movel));
+                    _verificarListaItemCarrinho(Inicio.itensCarrinho,
+                        ItemCarrinho(movel: movel, quantidade: 1));
                   },
                   child: Text('Comprar', style: TextStyle(color: Colors.white)),
                 )
@@ -50,8 +50,19 @@ class CardDetalhes extends StatelessWidget {
     );
   }
 
-  _adicionarItemCarrinho(ItemCarrinho item) {
+  void _adicionarItemCarrinho(ItemCarrinho item) {
     Inicio.itensCarrinho.add(item);
     atualizaPagina();
+  }
+
+  void _verificarListaItemCarrinho(
+      List<ItemCarrinho> lista, ItemCarrinho item) {
+    int indiceMovel = lista.indexWhere((item) => item.movel == movel);
+
+    if (indiceMovel >= 0) {
+      lista[indiceMovel].quantidade++;
+    } else {
+      _adicionarItemCarrinho(item);
+    }
   }
 }
