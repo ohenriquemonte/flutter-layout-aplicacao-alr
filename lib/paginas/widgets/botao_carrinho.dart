@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_layout_aplicacao_alr/main.dart';
 import 'package:flutter_layout_aplicacao_alr/paginas/widgets/indicador_botao_carrinho.dart';
 
-class BotaoCarrinho extends StatelessWidget {
+class BotaoCarrinho extends StatefulWidget {
+  @override
+  _BotaoCarrinhoState createState() => _BotaoCarrinhoState();
+}
+
+class _BotaoCarrinhoState extends State<BotaoCarrinho> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/carrinho');
+        Navigator.pushNamed(context, '/carrinho')
+            .then((value) => setState(() {}));
       },
       child: Container(
         decoration: BoxDecoration(

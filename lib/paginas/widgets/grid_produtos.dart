@@ -4,8 +4,8 @@ import 'package:flutter_layout_aplicacao_alr/paginas/widgets/elemento_grid_produ
 
 class GridProdutos extends StatelessWidget {
   final moveis;
-
-  GridProdutos({this.moveis});
+  final Function atualiza;
+  GridProdutos({this.moveis, this.atualiza});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class GridProdutos extends StatelessWidget {
         itemBuilder: (BuildContext context, int indice) {
           final movel = Movel.fromJson(moveis[indice]);
 
-          return ElementoGridProdutos(movel: movel);
+          return ElementoGridProdutos(movel: movel, atualiza: atualiza);
         }
         //   children: [
         //     Container(color: Colors.red),

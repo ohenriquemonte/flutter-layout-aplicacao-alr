@@ -39,9 +39,7 @@ class _CarrinhoState extends State<Carrinho> {
         titulo: 'Carrinho',
         ehPaginaCarrinho: true,
       ),
-      body: ListaCarrinho(
-        atualiza: atualiza,
-      ),
+      body: _construirTela(),
     );
   }
 
@@ -57,5 +55,19 @@ class _CarrinhoState extends State<Carrinho> {
     }
 
     return 0;
+  }
+
+  Widget _construirTela() {
+    if (Inicio.itensCarrinho.isNotEmpty) {
+      return ListaCarrinho(
+        atualiza: atualiza,
+      );
+    } else {
+      return Container(
+        height: double.infinity,
+        alignment: Alignment.center,
+        child: Text('Nenhum item no carrinho'),
+      );
+    }
   }
 }
